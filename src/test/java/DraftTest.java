@@ -12,7 +12,7 @@ import pageObject.LandingPage;
 import java.time.Duration;
 import java.util.List;
 
-public class DrawTest {
+public class DraftTest {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
