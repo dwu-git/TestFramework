@@ -13,17 +13,18 @@ import pageObject.OrderPage;
 import java.time.Duration;
 
 public class AbstractComponent {
+    @FindBy(css = "[routerlink*='cart']")
+    private WebElement cartHeaderButton;
+
+    @FindBy(css = "[routerlink*='myorders']")
+    private WebElement orderHeaderButton;
+
     WebDriver driver;
+
     public AbstractComponent(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(css = "[routerlink*='cart']")
-    WebElement cartHeaderButton;
-
-    @FindBy(css = "[routerlink*='myorders']")
-    WebElement orderHeaderButton;
 
     public void waitElementToAppear(By findBy) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));

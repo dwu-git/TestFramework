@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ConfirmationPage extends AbstractComponent {
+    @FindBy(css = ".hero-primary")
+    private WebElement confirmationMessage;
+
     WebDriver driver;
 
     public ConfirmationPage(WebDriver driver) {
@@ -14,9 +17,6 @@ public class ConfirmationPage extends AbstractComponent {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(css = ".hero-primary")
-    WebElement confirmationMessage;
 
     public String getConfirmationMessage() {
         return confirmationMessage.getText();

@@ -7,25 +7,26 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LandingPage extends AbstractComponent {
+    // PageFactory
+    @FindBy(id = "userEmail")
+    private WebElement userEmail;
+
+    @FindBy(id = "userPassword")
+    private WebElement userPassword;
+
+    @FindBy(id = "login")
+    private WebElement submitButton;
+
+    @FindBy(css = "[class*='flyInOut']")
+    WebElement errorMessage;
+
     WebDriver driver;
+
     public LandingPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    // PageFactory
-    @FindBy(id = "userEmail")
-    WebElement userEmail;
-
-    @FindBy(id = "userPassword")
-    WebElement userPassword;
-
-    @FindBy(id = "login")
-    WebElement submitButton;
-
-    @FindBy(css = "[class*='flyInOut']")
-    WebElement errorMessage;
 
     public ProductCatalog loginApplication(String email, String password) {
         userEmail.sendKeys(email);

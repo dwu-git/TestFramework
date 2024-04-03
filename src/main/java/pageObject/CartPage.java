@@ -9,6 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CartPage extends AbstractComponent {
+    @FindBy(xpath = "//*[@class='cartSection']/h3")
+    private List<WebElement> cartProducts;
+
+    @FindBy(xpath = "//*[@class='totalRow']/button")
+    private WebElement checkoutButton;
+
     WebDriver driver;
 
     public CartPage(WebDriver driver) {
@@ -16,12 +22,6 @@ public class CartPage extends AbstractComponent {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(xpath = "//*[@class='cartSection']/h3")
-    List<WebElement> cartProducts;
-
-    @FindBy(xpath = "//*[@class='totalRow']/button")
-    WebElement checkoutButton;
 
     public boolean verifyProductDisplay(String productName) {
         boolean isMatch = cartProducts.stream()

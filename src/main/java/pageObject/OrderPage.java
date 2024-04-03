@@ -9,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class OrderPage extends AbstractComponent {
+    @FindBy(css = "tr td:nth-child(3)")
+    private List<WebElement> productNames;
+
     WebDriver driver;
 
     public OrderPage(WebDriver driver) {
@@ -16,9 +19,6 @@ public class OrderPage extends AbstractComponent {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(css = "tr td:nth-child(3)")
-    List<WebElement> productNames;
 
     public boolean verifyOrderDisplay(String productName) {
         boolean isMatch = productNames.stream()

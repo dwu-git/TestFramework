@@ -10,23 +10,26 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class ProductCatalog extends AbstractComponent {
+    // PageFactory
+    @FindBy(css = ".mb-3")
+    private List<WebElement> products;
+
+    @FindBy(css = ".ng-animating")
+    private WebElement spinner;
+
+    private By productsBy = By.cssSelector(".mb-3");
+
+    private By addToCartButton = By.cssSelector(".card-body button:last-of-type");
+
+    private By toastMessage = By.cssSelector("#toast-container");
+
     WebDriver driver;
+
     public ProductCatalog(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    // PageFactory
-    @FindBy(css = ".mb-3")
-    List<WebElement> products;
-
-    @FindBy(css = ".ng-animating")
-    WebElement spinner;
-
-    By productsBy = By.cssSelector(".mb-3");
-    By addToCartButton = By.cssSelector(".card-body button:last-of-type");
-    By toastMessage = By.cssSelector("#toast-container");
 
     public List<WebElement> getProductList() {
         waitElementToAppear(productsBy);
