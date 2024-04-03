@@ -4,10 +4,14 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pageObject.LandingPage;
@@ -29,18 +33,28 @@ public class BaseTest {
         Properties properties = new Properties();
         FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/GlobalData.properties");
         properties.load(fileInputStream);
-        String browserName = properties.getProperty("browser");
+        // Checking if System variable(Maven) exists, if not - takes variable from properties(GlobalData.properties)
+        String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
 
-        if (browserName.equals("chrome")) {
+        if (browserName.contains("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+
+            if (browserName.contains("headless"))
+                chromeOptions.addArguments("headless");
+
+            driver = new ChromeDriver(chromeOptions);
+            driver.manage().window().setSize(new Dimension(1440, 900)); //full screen
         }
         else if (browserName.equals("firefox")) {
-            // Firefox
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
         }
         else if (browserName.equals("edge")) {
-            // Edge
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
         }
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         return driver;

@@ -12,7 +12,7 @@ public class ErrorValidationsTest extends BaseTest {
         String invalidUserPassword = "invalid";
 
         landingPage.loginApplication(invalidUserEmail, invalidUserPassword);
-        Assert.assertEquals(landingPage.getErrorMessage(), "BBaaadddIncorrect email or password.");
+        Assert.assertEquals(landingPage.getErrorMessage(), "ReeeeeeeeettttrrrryyyyyyIncorrect email or password.");
     }
 
     @Test
