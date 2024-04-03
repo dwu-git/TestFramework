@@ -18,7 +18,7 @@ public class LandingPage extends AbstractComponent {
     private WebElement submitButton;
 
     @FindBy(css = "[class*='flyInOut']")
-    WebElement errorMessage;
+    private WebElement errorMessage;
 
     private WebDriver driver;
 
