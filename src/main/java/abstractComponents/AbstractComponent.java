@@ -19,7 +19,7 @@ public class AbstractComponent {
     @FindBy(css = "[routerlink*='myorders']")
     private WebElement orderHeaderButton;
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public AbstractComponent(WebDriver driver) {
         this.driver = driver;

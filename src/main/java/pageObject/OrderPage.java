@@ -12,7 +12,7 @@ public class OrderPage extends AbstractComponent {
     @FindBy(css = "tr td:nth-child(3)")
     private List<WebElement> productNames;
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public OrderPage(WebDriver driver) {
         super(driver);

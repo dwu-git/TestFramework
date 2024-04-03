@@ -20,7 +20,7 @@ public class LandingPage extends AbstractComponent {
     @FindBy(css = "[class*='flyInOut']")
     WebElement errorMessage;
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public LandingPage(WebDriver driver) {
         super(driver);

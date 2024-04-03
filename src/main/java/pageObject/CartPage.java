@@ -15,7 +15,7 @@ public class CartPage extends AbstractComponent {
     @FindBy(xpath = "//*[@class='totalRow']/button")
     private WebElement checkoutButton;
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public CartPage(WebDriver driver) {
         super(driver);

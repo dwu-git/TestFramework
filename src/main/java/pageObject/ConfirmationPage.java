@@ -10,7 +10,7 @@ public class ConfirmationPage extends AbstractComponent {
     @FindBy(css = ".hero-primary")
     private WebElement confirmationMessage;
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public ConfirmationPage(WebDriver driver) {
         super(driver);

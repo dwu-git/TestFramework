@@ -20,7 +20,7 @@ public class CheckoutPage extends AbstractComponent {
 
     private By dropdownWithCountries = By.xpath("//*[@class='ta-item list-group-item ng-star-inserted']");
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);

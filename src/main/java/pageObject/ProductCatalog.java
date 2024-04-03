@@ -23,7 +23,7 @@ public class ProductCatalog extends AbstractComponent {
 
     private By toastMessage = By.cssSelector("#toast-container");
 
-    WebDriver driver;
+    private WebDriver driver;
 
     public ProductCatalog(WebDriver driver) {
         super(driver);
